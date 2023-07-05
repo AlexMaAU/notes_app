@@ -13,12 +13,3 @@ body {
     padding: 0 15px;
     min-height: 100vh;
 }
-
-.header {
-    color: white;
-    display: flex;
-    width: 100px;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 0;
-}

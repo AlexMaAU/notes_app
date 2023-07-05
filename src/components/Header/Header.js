@@ -1,3 +1,5 @@
+import './styles.css'
+
 const Header = ()=>{
     return (
         <div className="header">
