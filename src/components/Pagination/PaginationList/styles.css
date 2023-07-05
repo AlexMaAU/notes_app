@@ -1,0 +1,12 @@
+.paginationList {
+    cursor: pointer;
+    width: 20px;
+    text-align: center;
+}
+
+.paginationList_active {
+    cursor: pointer;
+    width: 20px;
+    text-align: center;
+    font-size: 20px;
+}

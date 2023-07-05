@@ -10,6 +10,33 @@ const Notes = () => {
   const [notes, setNotes] = useState(testData);
   const [charLeft, setCharLeft] = useState(200);
 
+  // Pagination
+  const [currentNotes, setCurrentNotes] = useState([]);  //sliced notes from all notes array, store notes displayed on current page
+  const [currentPage, setCurrentPage] = useState(1);  //current page index - start from 1
+  const [pageNumbers, setPageNumbers] = useState([]);  //total page numbers
+  const postPerPage = 9;
+
+  // Calculate page numbers array，used for mapping page numbers on Pagination
+  useEffect(() => {
+    const numbers = [];
+    for (let i = 1; i <= Math.ceil(notes.length / postPerPage); i++) {
+      numbers.push(i); 
+    }
+    setPageNumbers(numbers);
+  }, [notes]);
+  console.log(notes);
+
+  // get sliced notes for current page
+  useEffect(()=>{
+    const lastIndex = currentPage * postPerPage
+    const firstIndex = currentPage * postPerPage - 9
+    const filterNotes = notes.slice(firstIndex, lastIndex)
+    setCurrentNotes(filterNotes)
+  }, [notes, currentPage])
+
+  console.log(currentNotes)
+  // Pagination ends
+
   const handleDelete = (id) => {
     const newNote = notes.filter((note) => note.id !== id);
     setNotes(newNote);
@@ -23,7 +50,7 @@ const Notes = () => {
   return (
     <div>
       <div className='notes'>
-        {notes.map((note) => (
+        {currentNotes.map((note) => (
           <Note
             text={note.text}
             key={note.id}
@@ -32,8 +59,10 @@ const Notes = () => {
           />
         ))}
       </div>
-      <Pagination />
       <div className='createNote'>
+        <div>
+          <Pagination pageNumbers={pageNumbers} handleSetPage={setCurrentPage} currentPage={currentPage} />
+        </div>
         <CreateNote
           handleInputText={setInputText}
           handleNotes={setNotes}
