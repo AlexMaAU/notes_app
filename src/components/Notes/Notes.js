@@ -1,8 +1,9 @@
 import Note from '../Note';
 import CreateNote from '../CreateNote';
+import Pagination from '../Pagination';
 import { useEffect, useState } from 'react';
 import testData from '../../assets/testData/testData';
-import './styles.css'
+import './styles.css';
 
 const Notes = () => {
   const [inputText, setInputText] = useState('');
@@ -31,9 +32,7 @@ const Notes = () => {
           />
         ))}
       </div>
-      <div className='pagination'>
-        Pagination Here
-      </div>
+      <Pagination />
       <div className='createNote'>
         <CreateNote
           handleInputText={setInputText}
