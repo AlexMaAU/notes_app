@@ -1,4 +1,4 @@
-import '../../css/Note.css';
+import './styles.css';
 import DeleteForeverOutlined from '@mui/icons-material/DeleteForeverOutlined';
 
 const Note = ({ text, id, handleDelete }) => {

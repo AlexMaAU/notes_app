@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { v4 as UUID } from 'uuid';
 import LinearProgress from '@mui/material/LinearProgress'
+import './styles.css'
 
 const CreateNote = ({
   handleInputText,
@@ -14,12 +15,12 @@ const CreateNote = ({
   // console.log(notes);
 
   return (
-    <div className='note'>
+    <div className='create_note'>
       <textarea
         cols='10'
         rows='5'
         placeholder='Type...'
-        maxLength='100'
+        maxLength='200'
         value={inputText}
         onChange={(e) => {
           handleInputText(e.target.value);
